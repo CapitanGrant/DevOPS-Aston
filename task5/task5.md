@@ -35,12 +35,19 @@ ansible --version
 ```
 nano inventory.ini
 ```
+Пропишите host
 ```
-
+localhost ansible_connection=local
+```
+Проверьте работу ansible
 ```
 ansible -i inventory.ini all -m ping
 ```
+Вставьте код из файла playbook.yml
+```
 nano playbook.yml
+```
+Запустите ваш playbook.yml
 ```
 ansible-playbook -i inventory.ini playbook.yml
 ```
