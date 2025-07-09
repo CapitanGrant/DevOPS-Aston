@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./kanban-backend
+      dockerfile: kanban-backend/Dockerfile Back
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - kanban-net
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./kanban-frontend
+      dockerfile: kanban-frontend/Dockerfile Back Front
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - kanban-net
+    restart: unless-stopped
+
+networks:
+  kanban-net:
+    driver: bridge
